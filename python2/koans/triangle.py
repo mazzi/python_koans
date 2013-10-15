@@ -3,6 +3,7 @@
 
 # Triangle Project Code.
 
+from math import sqrt
 
 # triangle(a, b, c) analyzes the lengths of the sides of a triangle
 # (represented by a, b and c) and returns the type of triangle.
@@ -18,6 +19,10 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
+
+    if  not ( a+b > c and a+c > b and b+c > a ):
+        raise TriangleError
+
     if a == b == c == a:
         return 'equilateral'
     if a != b != c != a:
