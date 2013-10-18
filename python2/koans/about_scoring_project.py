@@ -34,9 +34,37 @@ from runner.koan import *
 # Your goal is to write the score method.
 
 def score(dice):
-    # You need to write this method
-    pass
 
+    values = dict( (int(n),0) for n in set( range(1,7) ) )
+
+    # populate de dictionary
+    for d in dice:        
+        values[d] += 1
+
+    ## calculate result
+    result = 0
+
+    # thousand
+    if values[1] >= 3:
+        result +=1000
+        values[1] -= 3
+
+    # tree values
+    for n in values:
+        if values[n] >= 3:
+            result += 100*n
+            values[n] -= 3
+
+    # single values
+    if values[1]:
+        result += 100*values[1]
+        values[1] -= 0
+
+    if values[5]:
+        result += 50*values[5]
+        values[5] -= 0
+
+    return result
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
@@ -72,3 +100,4 @@ class AboutScoringProject(Koan):
     def test_ones_not_left_out(self):
         self.assertEqual(300, score([1, 2, 2, 2]))
         self.assertEqual(350, score([1, 5, 2, 2, 2]))
+        self.assertEqual(1200, score([1,1,1,1,1]) )     # Test added
