@@ -75,13 +75,13 @@ class AboutScope(Koan):
         global counter
         start = counter
         self.increment_using_local_counter(start)
-        self.assertEqual(____, counter == start + 1)
+        self.assertEqual(False, counter == start + 1)
 
     def test_incrementing_with_global_counter(self):
         global counter
         start = counter
         self.increment_using_global_counter()
-        self.assertEqual(____, counter == start + 1)
+        self.assertEqual(True, counter == start + 1)
 
     # ------------------------------------------------------------------
 
@@ -89,4 +89,4 @@ class AboutScope(Koan):
     deadly_bingo = [4, 8, 15, 16, 23, 42]
 
     def test_global_attributes_can_be_created_in_the_middle_of_a_class(self):
-        self.assertEqual(__, deadly_bingo[5])
+        self.assertEqual(42, deadly_bingo[5])
