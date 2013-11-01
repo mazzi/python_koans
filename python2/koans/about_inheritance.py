@@ -24,18 +24,18 @@ class AboutInheritance(Koan):
             return "yip"
 
     def test_subclasses_have_the_parent_as_an_ancestor(self):
-        self.assertEqual(____, issubclass(self.Chihuahua, self.Dog))
+        self.assertEqual(True, issubclass(self.Chihuahua, self.Dog))
 
     def test_this_subclass_ultimately_inherits_from_object_class(self):
-        self.assertEqual(____, issubclass(self.Chihuahua, object))
+        self.assertEqual(True, issubclass(self.Chihuahua, object))
 
     def test_instances_inherit_behavior_from_parent_class(self):
         chico = self.Chihuahua("Chico")
-        self.assertEqual(__, chico.name)
+        self.assertEqual('Chico', chico.name)
 
     def test_subclasses_add_new_behavior(self):
         chico = self.Chihuahua("Chico")
-        self.assertEqual(__, chico.wag())
+        self.assertEqual('happy', chico.wag())
 
         try:
             fido = self.Dog("Fido")
